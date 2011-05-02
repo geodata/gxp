@@ -81,6 +81,7 @@ gxp.plugins.Print = Ext.extend(gxp.plugins.Tool, {
 
             var printProvider = new GeoExt.data.PrintProvider({
                 url: this.printService,
+                baseParams: {url: this.printService.replace(/\/$/g,"")},
                 autoLoad: false,
                 listeners: {
                     beforeprint: function() {
