@@ -223,6 +223,7 @@ gxp.plugins.WMSSource = Ext.extend(gxp.plugins.LayerSource, {
             // compatible projection that equals the map projection. This helps
             // us in dealing with the different EPSG codes for web mercator.
             var layerProjection = this.getProjection(original);
+            layer.projection = layerProjection;
 
             var nativeExtent = original.get("bbox")[projection.getCode()];
             var swapAxis = OpenLayers.Layer.WMS.prototype.reverseAxisOrder.call(
