@@ -61,8 +61,8 @@ GeoExt.Lang.add("ca", {
     },
 
     "gxp.plugins.Legend.prototype": { 
-        menuText: "Mostra Llegenda",
-        tooltip: "Mostra Llegenda"
+        menuText: "Mostra llegenda",
+        tooltip: "Mostra llegenda"
     },
 
     "gxp.plugins.Measure.prototype": {
