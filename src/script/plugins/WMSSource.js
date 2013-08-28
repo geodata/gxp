@@ -246,6 +246,11 @@ gxp.plugins.WMSSource = Ext.extend(gxp.plugins.LayerSource, {
                 FORMAT: config.format,
                 TRANSPARENT: config.transparent
             }, layer.params);
+            
+            // Apply time param if exists
+            if (config.time) {
+            	params.TIME = config.time
+            }
 
             layer = new OpenLayers.Layer.WMS(
                 config.title || layer.name, 
