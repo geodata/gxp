@@ -259,11 +259,11 @@ gxp.plugins.WMSSource = Ext.extend(gxp.plugins.LayerSource, {
                     attribution: layer.attribution,
                     maxExtent: maxExtent,
                     restrictedExtent: maxExtent,
-                    singleTile: ("tiled" in config) ? !config.tiled : false,
+                    singleTile: ("tiled" in config) ? !config.tiled : true,
                     ratio: config.ratio || 1,
                     visibility: ("visibility" in config) ? config.visibility : true,
                     opacity: ("opacity" in config) ? config.opacity : 1,
-                    buffer: ("buffer" in config) ? config.buffer : 1,
+                    buffer: ("buffer" in config) ? config.buffer : 0,
                     projection: layerProjection
                 }
             );
@@ -469,11 +469,15 @@ gxp.plugins.WMSSource = Ext.extend(gxp.plugins.LayerSource, {
         var config = gxp.plugins.WMSSource.superclass.getConfigForRecord.apply(this, arguments);
         var layer = record.getLayer();
         var params = layer.params;
-        return Ext.apply(config, {
+        var ret = Ext.apply(config, {
             format: params.FORMAT,
             styles: params.STYLES,
             transparent: params.TRANSPARENT
         });
+        if(params.TIME) {
+        	ret.time = params.TIME;
+        }
+        return ret;
     }
     
 });
